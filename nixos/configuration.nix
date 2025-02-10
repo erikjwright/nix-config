@@ -105,7 +105,7 @@
   programs.git.enable = true;
   programs.htop.enable = true;
   programs.hyprland.enable = true;
-  # programs.light.enable = true;
+  programs.light.enable = true;
   programs.zsh.enable = true;
 
   programs._1password.enable = true;
