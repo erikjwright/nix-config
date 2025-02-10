@@ -64,13 +64,13 @@
   };
 
   # Configure keymap in X11
-  services.xserver = {
-    xkb = {
-      layout = "us";
+  # services.xserver = {
+    # xkb = {
+      # layout = "us";
       # options = "caps:swapescape";
-      variant = "";
-    };
-  };
+      # variant = "";
+    # };
+  # };
 
   # console.useXkbConfig = true;
 
@@ -93,50 +93,12 @@
   nixpkgs.config.allowUnfree = true;
 
   # programs.dconf.enable = true;
-  programs.firefox.enable = true;
+  # programs.firefox.enable = true;
   programs.git.enable = true;
   programs.htop.enable = true;
   programs.hyprland.enable = true;
   # programs.light.enable = true;
-  programs = {
-    zsh = {
-      enable = true;
-      # interactiveShellInit = ''
-      # source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-      # '';
-      # syntaxHighlighting.enable = false;
-      # autosuggestions.enable = true;
-      # enableCompletion = true;
-      # dotDir = ".config/zsh";
-      # completionInit = ''
-      #   autoload -Uz compinit && compinit
-      #   zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-      # '';
-      #
-      # plugins = [
-      #   {
-      #     name = "zsh-vi-mode";
-      #     src = pkgs.fetchFromGitHub {
-      #       owner = "jeffreytse";
-      #       repo = "zsh-vi-mode";
-      #       rev = "v0.9.0";
-      #       sha256 = "sha256-KQ7UKudrpqUwI6gMluDTVN0qKpB15PI5P1YHHCBIlpg=";
-      #     };
-      #   }
-      # ];
-      #
-      # # .zshrc
-      # initExtra = ''
-      #   export ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLOCK
-      #
-      #   source ~/.dotfiles/path
-      #   source ~/.dotfiles/func
-      #
-      #   unsetopt share_history
-      #   setopt no_share_history
-      # '';
-    };
-  };
+  programs.zsh.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
