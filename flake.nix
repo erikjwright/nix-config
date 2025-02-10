@@ -11,6 +11,8 @@
     # url = "github:nix-community/home-manager";
     # inputs.nixpkgs.follows = "nixpkgs";
     # };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   outputs =
@@ -19,11 +21,17 @@
       nixpkgs,
       # home-manager,
       # nix-darwin,
+      neovim-nightly-overlay,
+      zen-browser,
       ...
     }:
     {
       nixosConfigurations = {
         kronos = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit neovim-nightly-overlay;
+            inherit zen-browser;
+          };
           system = "x86_64-linux";
           modules = [
             ./nixos/configuration.nix

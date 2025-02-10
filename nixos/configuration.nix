@@ -1,7 +1,9 @@
 {
   config,
   pkgs,
+  neovim-nightly-overlay,
   # inputs,
+  zen-browser,
   ...
 }:
 {
@@ -65,11 +67,11 @@
 
   # Configure keymap in X11
   # services.xserver = {
-    # xkb = {
-      # layout = "us";
-      # options = "caps:swapescape";
-      # variant = "";
-    # };
+  # xkb = {
+  # layout = "us";
+  # options = "caps:swapescape";
+  # variant = "";
+  # };
   # };
 
   # console.useXkbConfig = true;
@@ -92,6 +94,12 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  fonts.packages = with pkgs; [
+    # nerd-fonts.fira-code
+    # nerd-fonts.droid-sans-mono
+    nerd-fonts.meslo-lg
+  ];
+
   # programs.dconf.enable = true;
   # programs.firefox.enable = true;
   programs.git.enable = true;
@@ -100,10 +108,19 @@
   # programs.light.enable = true;
   programs.zsh.enable = true;
 
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    # Certain features, including CLI integration and system authentication support,
+    # require enabling PolKit integration on some desktop environments (e.g. Plasma).
+    polkitPolicyOwners = [ "erik" ];
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # bun
+    cameractrls
     chezmoi
     # clang
     curl
@@ -112,14 +129,14 @@
     eza
     fzf
     ghostty
-    # inputs.neovim-nightly-overlay.packages.${system}.default
     # gparted
-    # meslo-lgs-nf
-    neovim
+    neovim-nightly-overlay.packages.${system}.default
+    # neovim
     nixfmt-rfc-style
     # nodejs_22
     ripgrep
     # rustup
+    slack
     starship
     tofi
     # unzip
@@ -127,7 +144,7 @@
     # vim
     waybar
     yazi
-    # inputs.zen-browser.packages."${system}".default
+    zen-browser.packages."${system}".default
     zoxide
   ];
 
