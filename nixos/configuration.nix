@@ -51,6 +51,24 @@
     LC_TIME = "it_IT.UTF-8";
   };
 
+  # services.blueman.enable = true;
+	hardware.bluetooth.package = pkgs.bluez;
+	hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Name = "Computer";
+        ControllerMode = "dual";
+        FastConnectable = "true";
+        Experimental = "true";
+      };
+      Policy = { AutoEnable = "true"; };
+      LE = { EnableAdvMonInterleaveScan = "true"; };
+    };
+  };
+  services.blueman.enable = true;
+
   services.keyd = {
     enable = true;
     keyboards = {
@@ -64,6 +82,8 @@
       };
     };
   };
+
+  # services.mpris-proxy.enable = true;
 
   # Configure keymap in X11
   # services.xserver = {
@@ -95,15 +115,14 @@
   nixpkgs.config.allowUnfree = true;
 
   fonts.packages = with pkgs; [
-    # nerd-fonts.fira-code
-    # nerd-fonts.droid-sans-mono
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
     nerd-fonts.meslo-lg
   ];
 
   # programs.dconf.enable = true;
   # programs.firefox.enable = true;
   programs.git.enable = true;
-  programs.htop.enable = true;
   programs.hyprland.enable = true;
   programs.light.enable = true;
   programs.zsh.enable = true;
@@ -116,10 +135,25 @@
     polkitPolicyOwners = [ "erik" ];
   };
 
+  environment.sessionVariables = rec {
+    XDG_CACHE_HOME  = "$HOME/.cache";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME   = "$HOME/.local/share";
+    XDG_STATE_HOME  = "$HOME/.local/state";
+
+    # Not officially in the specification
+    XDG_BIN_HOME    = "$HOME/.local/bin";
+
+    PATH = [ 
+      "${XDG_BIN_HOME}"
+    ];
+  };
+
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # bun
+    btop
     cameractrls
     chezmoi
     # clang
@@ -130,16 +164,20 @@
     fzf
     ghostty
     # gparted
+    killall
     neovim-nightly-overlay.packages.${system}.default
     # neovim
     nixfmt-rfc-style
     # nodejs_22
+    overskride
+    podman
+    podman-tui
     ripgrep
     # rustup
-    slack
     starship
     tofi
-    # unzip
+    ungoogled-chromium
+    unzip
     # uv
     # vim
     waybar
