@@ -6,4 +6,4 @@
     # your desired nixpkgs here
   ];
   home.stateVersion = "23.11";
-};
+}
