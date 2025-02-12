@@ -161,6 +161,8 @@
     # dbeaver-bin
     direnv
     eza
+    # fuzzel
+    fd
     fzf
     ghostty
     # gparted
@@ -175,12 +177,13 @@
     ripgrep
     # rustup
     starship
-    tofi
+    # tofi
     ungoogled-chromium
     unzip
     # uv
     # vim
     waybar
+    wofi
     yazi
     zen-browser.packages."${system}".default
     zoxide
