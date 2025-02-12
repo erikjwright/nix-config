@@ -7,10 +7,10 @@
     # url = "github:LnL7/nix-darwin";
     # inputs.nixpkgs.follows = "nixpkgs";
     # };
-    # home-manager = {
-    # url = "github:nix-community/home-manager";
-    # inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
@@ -19,7 +19,7 @@
     {
       self,
       nixpkgs,
-      # home-manager,
+      home-manager,
       # nix-darwin,
       neovim-nightly-overlay,
       zen-browser,
@@ -27,7 +27,7 @@
     }:
     {
       nixosConfigurations = {
-        kronos = nixpkgs.lib.nixosSystem {
+        nixos = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit neovim-nightly-overlay;
             inherit zen-browser;
@@ -35,12 +35,18 @@
           system = "x86_64-linux";
           modules = [
             ./nixos/configuration.nix
+	      home-manager.nixosModules.home-manager
+              {
+	        home-manager.useGlobalPkgs = true;
+	        home-manager.useUserPackages = true;
+	        home-manager.users.erik = import ./nixos/home.nix;
+	      }
           ];
         };
       };
 
       # darwinConfigurations = {
-      # rhea = nix-darwin.lib.darwinSystem {
+      # darwin = nix-darwin.lib.darwinSystem {
       # system = "aarch64-darwin";
       # modules = [
       # ./darwin/configuration.nix

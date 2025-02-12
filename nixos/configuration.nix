@@ -52,8 +52,8 @@
   };
 
   # services.blueman.enable = true;
-	hardware.bluetooth.package = pkgs.bluez;
-	hardware.bluetooth = {
+  hardware.bluetooth.package = pkgs.bluez;
+  hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
     settings = {
@@ -67,7 +67,6 @@
       LE = { EnableAdvMonInterleaveScan = "true"; };
     };
   };
-  services.blueman.enable = true;
 
   services.keyd = {
     enable = true;
@@ -83,20 +82,6 @@
     };
   };
 
-  # services.mpris-proxy.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver = {
-  # xkb = {
-  # layout = "us";
-  # options = "caps:swapescape";
-  # variant = "";
-  # };
-  # };
-
-  # console.useXkbConfig = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
     defaultUserShell = pkgs.zsh;
     users.erik = {
@@ -114,14 +99,47 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    btop
+    cameractrls
+    chezmoi
+    curl
+    # dbeaver-bin
+    direnv
+    eza
+    fd
+    fzf
+    ghostty
+    # gparted
+    killall
+    lazygit
+    neovim-nightly-overlay.packages.${system}.default
+    nixfmt-rfc-style
+    overskride
+    podman
+    podman-tui
+    ripgrep
+    starship
+    # ungoogled-chromium
+    unzip
+    vim
+    waybar
+    wofi
+    yazi
+    zen-browser.packages."${system}".default
+    zoxide
+  ];
+
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
     nerd-fonts.droid-sans-mono
     nerd-fonts.meslo-lg
+    nerd-fonts.monaspace
   ];
 
-  # programs.dconf.enable = true;
-  # programs.firefox.enable = true;
+  programs.firefox.enable = true;
   programs.git.enable = true;
   programs.hyprland.enable = true;
   programs.light.enable = true;
@@ -148,46 +166,6 @@
       "${XDG_BIN_HOME}"
     ];
   };
-
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    btop
-    cameractrls
-    chezmoi
-    # clang
-    curl
-    # dbeaver-bin
-    direnv
-    eza
-    # fuzzel
-    fd
-    fzf
-    ghostty
-    # gparted
-    killall
-    neovim-nightly-overlay.packages.${system}.default
-    # neovim
-    nixfmt-rfc-style
-    # nodejs_22
-    overskride
-    podman
-    podman-tui
-    ripgrep
-    # rustup
-    starship
-    # tofi
-    ungoogled-chromium
-    unzip
-    # uv
-    # vim
-    waybar
-    wofi
-    yazi
-    zen-browser.packages."${system}".default
-    zoxide
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
