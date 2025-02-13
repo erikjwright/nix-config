@@ -28,18 +28,25 @@
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit neovim-nightly-overlay;
-            inherit zen-browser;
-          };
+          # specialArgs = {
+          #   inherit neovim-nightly-overlay;
+          #   inherit zen-browser;
+          # };
           system = "x86_64-linux";
           modules = [
             ./nixos/configuration.nix
-	      home-manager.nixosModules.home-manager
+            home-manager.nixosModules.home-manager
               {
-	        home-manager.useGlobalPkgs = true;
-	        home-manager.useUserPackages = true;
-	        home-manager.users.erik = import ./nixos/home.nix;
+	        home-manager = {
+		  backupFileExtension = "~";
+		  useGlobalPkgs = true;
+	          useUserPackages = true;
+	          users.erik = import ./nixos/home.nix;
+	          extraSpecialArgs = {
+                    inherit neovim-nightly-overlay;
+                    inherit zen-browser;
+                  };
+		};
 	      }
           ];
         };

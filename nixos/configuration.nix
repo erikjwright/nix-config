@@ -1,9 +1,6 @@
 {
   config,
   pkgs,
-  neovim-nightly-overlay,
-  # inputs,
-  zen-browser,
   ...
 }:
 {
@@ -51,14 +48,33 @@
     LC_TIME = "it_IT.UTF-8";
   };
 
-  # services.blueman.enable = true;
+users.defaultUserShell=pkgs.zsh;
+
+		  users = {
+		    users.erik = {
+shell = pkgs.zsh;
+
+		      isNormalUser = true;
+		      description = "Erik Wright";
+		      extraGroups = [
+			"networkmanager"
+			# "video"
+			"wheel"
+		      ];
+		    };
+		  };
+
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   hardware.bluetooth.package = pkgs.bluez;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
     settings = {
       General = {
-        Name = "Computer";
+        Name = "nixos";
         ControllerMode = "dual";
         FastConnectable = "true";
         Experimental = "true";
@@ -67,6 +83,51 @@
       LE = { EnableAdvMonInterleaveScan = "true"; };
     };
   };
+
+  fonts.packages = with pkgs; [
+    # nerd-fonts.fira-code
+    # nerd-fonts.droid-sans-mono
+    # nerd-fonts.meslo-lg
+    nerd-fonts.monaspace
+  ];
+
+  # environment.shells = with pkgs; [ zsh ];
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    curl
+    keybase
+    keybase-gui
+    vim
+  ];
+
+  programs.git.enable = true;
+  programs.hyprland.enable = true;
+  programs.light.enable = true;
+  programs.zsh.enable = true;
+
+  # Enables the 1Password CLI
+programs._1password = { enable = true; };
+
+# Enables the 1Password desktop app
+programs._1password-gui = {
+enable = true;
+# this makes system auth etc. work properly
+polkitPolicyOwners = [ "erik" ];
+};
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
 
   services.keyd = {
     enable = true;
@@ -82,103 +143,6 @@
     };
   };
 
-  users = {
-    defaultUserShell = pkgs.zsh;
-    users.erik = {
-      isNormalUser = true;
-      description = "Erik Wright";
-      extraGroups = [
-        "networkmanager"
-        # "video"
-        "wheel"
-      ];
-      packages = with pkgs; [ ];
-    };
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    btop
-    cameractrls
-    chezmoi
-    curl
-    # dbeaver-bin
-    direnv
-    eza
-    fd
-    fzf
-    ghostty
-    # gparted
-    killall
-    lazygit
-    neovim-nightly-overlay.packages.${system}.default
-    nixfmt-rfc-style
-    overskride
-    podman
-    podman-tui
-    ripgrep
-    starship
-    # ungoogled-chromium
-    unzip
-    vim
-    waybar
-    wofi
-    yazi
-    zen-browser.packages."${system}".default
-    zoxide
-  ];
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-    nerd-fonts.droid-sans-mono
-    nerd-fonts.meslo-lg
-    nerd-fonts.monaspace
-  ];
-
-  programs.firefox.enable = true;
-  programs.git.enable = true;
-  programs.hyprland.enable = true;
-  programs.light.enable = true;
-  programs.zsh.enable = true;
-
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    # Certain features, including CLI integration and system authentication support,
-    # require enabling PolKit integration on some desktop environments (e.g. Plasma).
-    polkitPolicyOwners = [ "erik" ];
-  };
-
-  environment.sessionVariables = rec {
-    XDG_CACHE_HOME  = "$HOME/.cache";
-    XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME   = "$HOME/.local/share";
-    XDG_STATE_HOME  = "$HOME/.local/state";
-
-    # Not officially in the specification
-    XDG_BIN_HOME    = "$HOME/.local/bin";
-
-    PATH = [ 
-      "${XDG_BIN_HOME}"
-    ];
-  };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -193,5 +157,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }
