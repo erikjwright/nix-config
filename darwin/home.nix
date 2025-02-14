@@ -1,5 +1,8 @@
 { config, pkgs, lib, neovim-nightly-overlay, ... }:
 {
+  home.username = "erik";
+  home.homeDirectory = "/Users/erik";
+
   home.stateVersion = "24.11";
 
   # xdg.enable = true;

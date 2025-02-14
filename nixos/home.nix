@@ -38,6 +38,8 @@
   ];
 
   programs.home-manager.enable = true;
+  programs.direnv.enable = true;
+  programs.htop.enable = true;
   # programs.zsh.enable = true;
 
   # programs.firefox.enable = true;
