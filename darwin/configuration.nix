@@ -5,6 +5,8 @@
 }:
 {
 
+# users.defaultUserShell=pkgs.zsh;
+	  users.users.erik.shell = pkgs.zsh;
           # system.configurationRevision = self.rev or self.dirtyRev or null;
 
           # Used for backwards compatibility, please read the changelog before changing.
@@ -61,23 +63,6 @@
           };
 
           programs.zsh.enable = true;
-
-# users.defaultUserShell=pkgs.zsh;
-
-		  users = {
-		    users.erik = {
-shell = pkgs.zsh;
-		      #
-		      # isNormalUser = true;
-		      # description = "Erik Wright";
-			#      extraGroups = [
-			# "networkmanager"
-			# # "video"
-			# "wheel"
-			#      ];
-		    };
-		  };
-
 
 }
  
