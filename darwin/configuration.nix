@@ -25,6 +25,31 @@
             screensaver.askForPasswordDelay = 0;
           };
 
+          homebrew = {
+            enable = true;
+            onActivation.cleanup = "uninstall";
+            taps = [
+            ];
+            brews = [
+              "zsh-vi-mode"
+              "zsh-autosuggestions"
+            ];
+            casks = [
+              "1password"
+              "1password-cli"
+	      "docker"
+              "ghostty"
+              "keybase"
+              "mullvadvpn"
+              "notion"
+              "raycast"
+              "zen-browser"
+            ];
+            masApps = {
+              slack = 803453959;
+            };
+          };
+
           programs.zsh.enable = true;
 
           # system.configurationRevision = self.rev or self.dirtyRev or null;
