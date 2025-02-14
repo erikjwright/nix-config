@@ -4,6 +4,16 @@
   ...
 }:
 {
+
+          # system.configurationRevision = self.rev or self.dirtyRev or null;
+
+          # Used for backwards compatibility, please read the changelog before changing.
+          # $ darwin-rebuild changelog
+          system.stateVersion = 5;
+
+          # The platform the configuration will be used on.
+          nixpkgs.hostPlatform = "aarch64-darwin";
+
           nix.settings.experimental-features = "nix-command flakes";
 
           environment.systemPackages = with pkgs; [
@@ -52,13 +62,22 @@
 
           programs.zsh.enable = true;
 
-          # system.configurationRevision = self.rev or self.dirtyRev or null;
+users.defaultUserShell=pkgs.zsh;
 
-          # Used for backwards compatibility, please read the changelog before changing.
-          # $ darwin-rebuild changelog
-          system.stateVersion = 5;
+		  users = {
+		    users.erik = {
+shell = pkgs.zsh;
 
-          # The platform the configuration will be used on.
-          nixpkgs.hostPlatform = "aarch64-darwin";
+		      isNormalUser = true;
+		      description = "Erik Wright";
+		      extraGroups = [
+			"networkmanager"
+			# "video"
+			"wheel"
+		      ];
+		    };
+		  };
+
+
 }
  

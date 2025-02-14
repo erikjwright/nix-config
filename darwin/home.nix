@@ -1,4 +1,4 @@
-{ config, pkgs, lib, neovim-nightly-overlay, ... }:
+{ pkgs, neovim-nightly-overlay, ... }:
 {
   home.username = "erik";
   home.homeDirectory = "/Users/erik";
