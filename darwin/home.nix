@@ -22,8 +22,8 @@
   ];
 
   programs.home-manager.enable = true;
-  programs.direnv.enable = true;
-  programs.htop.enable = true;
+  # programs.direnv.enable = true;
+  # programs.htop.enable = true;
   # programs.htop.settings.show_program_path = true;
 
 
