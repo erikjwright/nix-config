@@ -27,22 +27,22 @@
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-         system = "x86_64-linux";
+          system = "x86_64-linux";
           modules = [
             ./nixos/configuration.nix
             home-manager.nixosModules.home-manager
-              {
-	        home-manager = {
-		  backupFileExtension = "~";
-		  useGlobalPkgs = true;
-	          useUserPackages = true;
-	          users.erik = import ./nixos/home.nix;
-	          extraSpecialArgs = {
-                    inherit neovim-nightly-overlay;
-                    inherit zen-browser;
-                  };
-		};
-	      }
+            {
+              home-manager = {
+                backupFileExtension = "~";
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.erik = import ./nixos/home.nix;
+                extraSpecialArgs = {
+                  inherit neovim-nightly-overlay;
+                  inherit zen-browser;
+                };
+              };
+            }
           ];
         };
       };
@@ -52,26 +52,26 @@
           system = "aarch64-darwin";
           modules = [
             ./darwin/configuration.nix
-	    ./darwin/system.nix
+            ./darwin/system.nix
             home-manager.darwinModules.home-manager
-              {
-		users.users.erik = {
-  # isNormalUser  = true;
-  home  = "/Users/erik";
-  description  = "Erik Wright";
-  # extraGroups  = [ "wheel" "networkmanager" ];
-  # openssh.authorizedKeys.keys  = [ "ssh-dss AAAAB3Nza... alice@foobar" ];
-};
-	       home-manager = {
-		  backupFileExtension = "~";
-		  useGlobalPkgs = true;
-		  useUserPackages = true;
-		  users.erik = import ./darwin/home.nix;
-		  extraSpecialArgs = {
-                    inherit neovim-nightly-overlay;
-                  };
-	      };
-						}
+            {
+              users.users.erik = {
+                # isNormalUser  = true;
+                home = "/Users/erik";
+                description = "Erik Wright";
+                # extraGroups  = [ "wheel" "networkmanager" ];
+                # openssh.authorizedKeys.keys  = [ "ssh-dss AAAAB3Nza... alice@foobar" ];
+              };
+              home-manager = {
+                backupFileExtension = "~";
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.erik = import ./darwin/home.nix;
+                extraSpecialArgs = {
+                  inherit neovim-nightly-overlay;
+                };
+              };
+            }
           ];
         };
       };

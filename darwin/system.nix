@@ -1,5 +1,12 @@
 { ... }:
 {
+  power = {
+    sleep = {
+      computer = "never";
+      display = "never";
+    };
+  };
+
   system.defaults = {
     CustomUserPreferences = {
       NSGlobalDomain = {
@@ -24,13 +31,13 @@
         FlashDateSeparators = false;
       };
     };
-    alf = {
-      allowdownloadsignedenabled = 1;
-      allowsignedenabled = 1;
-      globalstate = 1;
-      loggingenabled = 0;
-      stealthenabled = 1;
-    };
+    # alf = {
+    #   allowdownloadsignedenabled = 1;
+    #   allowsignedenabled = 1;
+    #   globalstate = 1;
+    #   loggingenabled = 0;
+    #   stealthenabled = 1;
+    # };
     dock = {
       appswitcher-all-displays = true;
       autohide = true;
@@ -56,33 +63,13 @@
       wvous-tl-corner = 1;
       wvous-tr-corner = 1;
       persistent-apps = [
-        "/Applications/DEVONthink 3.app"
-        "/Applications/Obsidian.app"
-        "/System/Applications/App Store.app"
-        "/System/Applications/Music.app"
-        "/Applications/Orion RC.app"
-        "/Applications/Google Chrome.app"
-        "/Applications/Raindrop.io.app"
+        # "/Applications/Obsidian.app"
+        # "/Applications/Google Chrome.app"
         "/Applications/1Password.app"
-        "/System/Applications/Messages.app"
-        "/Applications/WhatsApp.app"
-        "/System/Applications/Mail.app"
-        "/Applications/zoom.us.app"
-        "/Applications/Microsoft Teams.app"
-        "/Applications/Godspeed.app"
-        "/System/Applications/Calendar.app"
-        "/Applications/Zed Preview.app"
+        # "/Applications/Microsoft Teams.app"
         "/Applications/Ghostty.app"
-        "/Applications/Fork.app"
-        "/Applications/OrbStack.app"
-        "/Applications/Zotero.app"
-        "/Applications/PDF Expert.app"
-        "/Applications/iA Presenter.app"
-        "/Applications/Microsoft Word.app"
-        "/Applications/Microsoft Excel.app"
-        "/Applications/Microsoft PowerPoint.app"
         "/Applications/NeoHtop.app"
-        "/System/Applications/System Settings.app"
+        # "/System/Applications/System Settings.app"
       ];
       # persistent-others = [ "${userHome}/Downloads/" ];
     };

@@ -56,16 +56,21 @@
         FastConnectable = "true";
         Experimental = "true";
       };
-      Policy = { AutoEnable = "true"; };
-      LE = { EnableAdvMonInterleaveScan = "true"; };
+      Policy = {
+        AutoEnable = "true";
+      };
+      LE = {
+        EnableAdvMonInterleaveScan = "true";
+      };
     };
   };
 
   fonts.packages = with pkgs; [
     # nerd-fonts.fira-code
-    # nerd-fonts.droid-sans-mono
     # nerd-fonts.meslo-lg
     nerd-fonts.monaspace
+    nerd-fonts.caskaydia-cave
+    nerd-fonts.caskaydia-mono
   ];
 
   # environment.shells = with pkgs; [ zsh ];
@@ -77,32 +82,33 @@
     keybase-gui
   ];
 
-programs._1password = { enable = true; };
-programs._1password-gui = {
-enable = true;
-polkitPolicyOwners = [ "erik" ];
-};
+  programs._1password = {
+    enable = true;
+  };
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "erik" ];
+  };
   programs.git.enable = true;
   programs.hyprland.enable = true;
   programs.light.enable = true;
   programs.zsh.enable = true;
 
-users.defaultUserShell=pkgs.zsh;
+  users.defaultUserShell = pkgs.zsh;
 
-		  users = {
-		    users.erik = {
-shell = pkgs.zsh;
+  users = {
+    users.erik = {
+      shell = pkgs.zsh;
 
-		      isNormalUser = true;
-		      description = "Erik Wright";
-		      extraGroups = [
-			"networkmanager"
-			# "video"
-			"wheel"
-		      ];
-		    };
-		  };
-
+      isNormalUser = true;
+      description = "Erik Wright";
+      extraGroups = [
+        "networkmanager"
+        # "video"
+        "wheel"
+      ];
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -130,7 +136,6 @@ shell = pkgs.zsh;
       };
     };
   };
-
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
