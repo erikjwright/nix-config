@@ -54,6 +54,13 @@
             ./darwin/configuration.nix
             home-manager.darwinModules.home-manager
               {
+		users.users.erik = {
+  isNormalUser  = true;
+  home  = "/Users/erik";
+  description  = "Erik Wright";
+  extraGroups  = [ "wheel" "networkmanager" ];
+  # openssh.authorizedKeys.keys  = [ "ssh-dss AAAAB3Nza... alice@foobar" ];
+};
 	       home-manager = {
 		  backupFileExtension = "~";
 		  useGlobalPkgs = true;
