@@ -1,12 +1,12 @@
 {
-  description = "Erik's Nix Systems";
+  description = "Erik's Systems";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    # nix-darwin = {
-    # url = "github:LnL7/nix-darwin";
-    # inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,20 +19,15 @@
     {
       self,
       nixpkgs,
+      nix-darwin,
       home-manager,
-      # nix-darwin,
       neovim-nightly-overlay,
       zen-browser,
-      ...
     }:
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          # specialArgs = {
-          #   inherit neovim-nightly-overlay;
-          #   inherit zen-browser;
-          # };
-          system = "x86_64-linux";
+         system = "x86_64-linux";
           modules = [
             ./nixos/configuration.nix
             home-manager.nixosModules.home-manager
@@ -52,13 +47,25 @@
         };
       };
 
-      # darwinConfigurations = {
-      # darwin = nix-darwin.lib.darwinSystem {
-      # system = "aarch64-darwin";
-      # modules = [
-      # ./darwin/configuration.nix
-      # ];
-      # };
-      # };
+      darwinConfigurations = {
+        darwin = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [
+            ./darwin/configuration.nix
+            home-manager.darwinModules.home-manager
+              {
+	       home-manager = {
+		  backupFileExtension = "~";
+		  useGlobalPkgs = true;
+		  useUserPackages = true;
+		  users.erik = import ./darwin/home.nix;
+		  extraSpecialArgs = {
+                    inherit neovim-nightly-overlay;
+                  };
+	      };
+						}
+          ];
+        };
+      };
     };
 }

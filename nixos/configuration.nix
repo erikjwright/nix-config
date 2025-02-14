@@ -5,7 +5,6 @@
 }:
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -15,25 +14,21 @@
   ];
   # nix.settings.trusted-users = [ "erik" ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_6_13;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "nixos";
+  # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "Europe/Rome";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -48,24 +43,6 @@
     LC_TIME = "it_IT.UTF-8";
   };
 
-users.defaultUserShell=pkgs.zsh;
-
-		  users = {
-		    users.erik = {
-shell = pkgs.zsh;
-
-		      isNormalUser = true;
-		      description = "Erik Wright";
-		      extraGroups = [
-			"networkmanager"
-			# "video"
-			"wheel"
-		      ];
-		    };
-		  };
-
-
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   hardware.bluetooth.package = pkgs.bluez;
@@ -98,23 +75,34 @@ shell = pkgs.zsh;
     curl
     keybase
     keybase-gui
-    vim
   ];
 
+programs._1password = { enable = true; };
+programs._1password-gui = {
+enable = true;
+polkitPolicyOwners = [ "erik" ];
+};
   programs.git.enable = true;
   programs.hyprland.enable = true;
   programs.light.enable = true;
   programs.zsh.enable = true;
 
-  # Enables the 1Password CLI
-programs._1password = { enable = true; };
+users.defaultUserShell=pkgs.zsh;
 
-# Enables the 1Password desktop app
-programs._1password-gui = {
-enable = true;
-# this makes system auth etc. work properly
-polkitPolicyOwners = [ "erik" ];
-};
+		  users = {
+		    users.erik = {
+shell = pkgs.zsh;
+
+		      isNormalUser = true;
+		      description = "Erik Wright";
+		      extraGroups = [
+			"networkmanager"
+			# "video"
+			"wheel"
+		      ];
+		    };
+		  };
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
