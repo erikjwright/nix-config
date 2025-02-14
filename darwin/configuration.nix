@@ -4,7 +4,6 @@
   ...
 }:
 {
-
 # users.defaultUserShell=pkgs.zsh;
 	  users.users.erik.shell = pkgs.zsh;
           # system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -17,6 +16,7 @@
           nixpkgs.hostPlatform = "aarch64-darwin";
 
           nix.settings.experimental-features = "nix-command flakes";
+	  nix.enable = false;
 
           environment.systemPackages = with pkgs; [
 		curl
@@ -27,15 +27,22 @@
           system.keyboard.enableKeyMapping = true;
           system.keyboard.remapCapsLockToEscape = true;
 
-          system.defaults = {
-            dock.autohide = true;
-            dock.mru-spaces = false;
-            finder.AppleShowAllExtensions = true;
-            finder.FXPreferredViewStyle = "clmv";
-            loginwindow.LoginwindowText = "Erik's M1";
-            screencapture.location = "~/Pictures/screenshots";
-            screensaver.askForPasswordDelay = 0;
-          };
+	    #      system.defaults = {
+	    #        dock.autohide = true;
+	    # # dock.entries = [
+	    # #   { path = "/Applications/Slack.app/"; }
+	    # #   # { path = "/Applications/Telegram.app/"; }
+	    # #   { path = "${pkgs.ghostty}/Applications/Ghostty.app/"; }
+	    # #        ];
+	    #        dock.mru-spaces = false;
+	    #        finder.AppleShowAllExtensions = true;
+	    #        finder.FXPreferredViewStyle = "clmv";
+	    #        loginwindow.LoginwindowText = "Erik's M1";
+	    #        screencapture.location = "~/Pictures/screenshots";
+	    #        screensaver.askForPasswordDelay = 0;
+	    #      };
+	    #
+
 
           homebrew = {
             enable = true;

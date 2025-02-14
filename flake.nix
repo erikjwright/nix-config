@@ -52,6 +52,7 @@
           system = "aarch64-darwin";
           modules = [
             ./darwin/configuration.nix
+	    ./darwin/system.nix
             home-manager.darwinModules.home-manager
               {
 		users.users.erik = {
