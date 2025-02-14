@@ -62,19 +62,19 @@
 
           programs.zsh.enable = true;
 
-users.defaultUserShell=pkgs.zsh;
+# users.defaultUserShell=pkgs.zsh;
 
 		  users = {
 		    users.erik = {
 shell = pkgs.zsh;
-
-		      isNormalUser = true;
-		      description = "Erik Wright";
-		      extraGroups = [
-			"networkmanager"
-			# "video"
-			"wheel"
-		      ];
+		      #
+		      # isNormalUser = true;
+		      # description = "Erik Wright";
+			#      extraGroups = [
+			# "networkmanager"
+			# # "video"
+			# "wheel"
+			#      ];
 		    };
 		  };
 
