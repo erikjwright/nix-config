@@ -8,6 +8,7 @@
   # xdg.enable = true;
 
   home.packages = with pkgs; [
+    appflowy
     chezmoi
     dbeaver-bin
     direnv
