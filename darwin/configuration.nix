@@ -55,6 +55,7 @@
       "neohtop"
       "notion"
       "raycast"
+      "super-productivity"
       "zen-browser"
     ];
     masApps = {
