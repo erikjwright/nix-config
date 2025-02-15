@@ -54,6 +54,7 @@
       "mullvadvpn"
       "neohtop"
       "notion"
+      "obsidian"
       "raycast"
       "super-productivity"
       "zen-browser"
