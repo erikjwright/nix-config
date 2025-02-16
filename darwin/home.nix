@@ -19,7 +19,7 @@
     neovim-nightly-overlay.packages.${system}.default
     nixfmt-rfc-style
     starship
-    thunderbird
+    thunderbird-latest-unwrapped
     yazi
     zoxide
   ];
