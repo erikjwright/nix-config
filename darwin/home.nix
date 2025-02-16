@@ -8,6 +8,7 @@
   # xdg.enable = true;
 
   home.packages = with pkgs; [
+    appflowy
     chezmoi
     dbeaver-bin
     direnv
@@ -18,6 +19,7 @@
     neovim-nightly-overlay.packages.${system}.default
     nixfmt-rfc-style
     starship
+    thunderbird-latest-unwrapped
     yazi
     zoxide
   ];

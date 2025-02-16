@@ -47,6 +47,7 @@
     casks = [
       "1password"
       "1password-cli"
+      "bitwarden"
       "docker"
       "ghostty"
       "keybase"
