@@ -18,6 +18,7 @@
     # ghostty
     neovim-nightly-overlay.packages.${system}.default
     nixfmt-rfc-style
+    ripgrep
     starship
     thunderbird-latest-unwrapped
     yazi
