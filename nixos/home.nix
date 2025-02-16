@@ -27,6 +27,7 @@
     overskride
     podman
     podman-tui
+    rclone
     ripgrep
     starship
     unzip
