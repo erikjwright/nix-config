@@ -1,4 +1,5 @@
 {
+  pkgs,
   neovim-nightly-overlay,
   zen-browser,
   ...
