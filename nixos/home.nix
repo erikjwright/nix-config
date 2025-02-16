@@ -1,5 +1,4 @@
 {
-  pkgs,
   neovim-nightly-overlay,
   zen-browser,
   ...
@@ -23,12 +22,12 @@
     lazygit
     neovim-nightly-overlay.packages.${system}.default
     nixfmt-rfc-style
+    obsidian
     overskride
     podman
     podman-tui
     ripgrep
     starship
-    # ungoogled-chromium
     unzip
     waybar
     wofi

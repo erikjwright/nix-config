@@ -69,7 +69,7 @@
     # nerd-fonts.fira-code
     # nerd-fonts.meslo-lg
     nerd-fonts.monaspace
-    nerd-fonts.caskaydia-cave
+    nerd-fonts.caskaydia-cove
     nerd-fonts.caskaydia-mono
   ];
 
@@ -78,6 +78,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     curl
+    dig
     keybase
     keybase-gui
   ];
