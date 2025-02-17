@@ -22,7 +22,6 @@
     ripgrep
     starship
     thunderbird-latest-unwrapped
-    ungoogled-chromium
     yazi
     zoxide
   ];
