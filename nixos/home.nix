@@ -21,6 +21,7 @@
     ghostty
     # killall
     lazygit
+    loupe
     neovim-nightly-overlay.packages.${system}.default
     nixfmt-rfc-style
     obsidian
