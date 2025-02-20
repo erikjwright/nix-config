@@ -3,7 +3,8 @@
   neovim-nightly-overlay,
   zen-browser,
   ...
-}: {
+}:
+{
   home.username = "erik";
   home.homeDirectory = "/home/erik";
 
@@ -13,18 +14,18 @@
     btop
     # cameractrls
     chezmoi
-     # dbeaver-bin
+    # dbeaver-bin
     direnv
     eza
     fd
     fzf
     ghostty
+    gnupg
     # killall
     lazygit
     loupe
     neovim-nightly-overlay.packages.${system}.default
     nixfmt-rfc-style
-    obsidian
     overskride
     podman
     podman-tui
@@ -55,7 +56,7 @@
   #   # Not officially in the specification
   #   XDG_BIN_HOME    = "$HOME/.local/bin";
   #
-  #   PATH = [ 
+  #   PATH = [
   #     "${XDG_BIN_HOME}"
   #   ];
   # };

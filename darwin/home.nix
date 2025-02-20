@@ -16,6 +16,7 @@
     fzf
     git
     # ghostty
+    gnupg
     lazygit
     neovim-nightly-overlay.packages.${system}.default
     nixfmt-rfc-style
