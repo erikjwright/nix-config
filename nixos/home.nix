@@ -21,6 +21,7 @@
     fzf
     ghostty
     gnupg
+    hcp
     # killall
     lazygit
     loupe
@@ -31,6 +32,7 @@
     podman-tui
     rclone
     ripgrep
+    sops
     starship
     unzip
     waybar

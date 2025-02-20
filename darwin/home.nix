@@ -17,10 +17,12 @@
     git
     # ghostty
     gnupg
+    hcp
     lazygit
     neovim-nightly-overlay.packages.${system}.default
     nixfmt-rfc-style
     ripgrep
+    sops
     starship
     thunderbird-latest-unwrapped
     yazi
