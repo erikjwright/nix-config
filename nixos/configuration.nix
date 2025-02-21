@@ -93,8 +93,6 @@
   environment.systemPackages = with pkgs; [
     curl
     dig
-    keybase
-    keybase-gui
   ];
 
   programs._1password = {
@@ -139,6 +137,9 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  services.keybase.enable = true;
+  services.kbfs.enable = true;
 
   services.keyd = {
     enable = true;

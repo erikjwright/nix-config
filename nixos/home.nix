@@ -11,9 +11,14 @@
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
+    # bitwarden-cli
+    bitwarden-desktop
     btop
     # cameractrls
     chezmoi
+    cloudflared
+    cryptomator
+    czkawka
     # dbeaver-bin
     direnv
     eza
@@ -22,6 +27,8 @@
     ghostty
     gnupg
     hcp
+    kbfs
+    keybase-gui
     # killall
     lazygit
     loupe
@@ -35,6 +42,7 @@
     sops
     starship
     unzip
+    vaultwarden
     waybar
     wofi
     yazi
