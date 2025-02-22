@@ -95,22 +95,6 @@ pkgs,
         dig
     ];
 
-    programs._1password = {
-        enable = true;
-    };
-    programs._1password-gui = {
-        enable = true;
-        polkitPolicyOwners = [ "erik" ];
-    };
-    programs.git.enable = true;
-    programs.hyprland = {
-        enable = true;
-        portalPackage.enable = true;
-    };
-
-    programs.light.enable = true;
-    programs.zsh.enable = true;
-
     users.defaultUserShell = pkgs.zsh;
 
     users = {
@@ -127,15 +111,32 @@ pkgs,
         };
     };
 
+    programs._1password = {
+        enable = true;
+    };
+    programs._1password-gui = {
+        enable = true;
+        polkitPolicyOwners = [ "erik" ];
+    };
+    programs.git.enable = true;
+    programs.hyprland = {
+        enable = true;
+        portalPackage.enable = true;
+    };
+
+    programs.light.enable = true;
+    programs.zsh.enable = true;
+
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     programs.mtr.enable = true;
 
-    services.gpg-agent = {
+    programs.gpg-agent = {
         enable = true;
         defaultCacheTtl = 1800;
         enableSshSupport = true;
     };
+
 
 
     # List services that you want to enable:
