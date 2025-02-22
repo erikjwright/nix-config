@@ -13,7 +13,6 @@
   home.packages = with pkgs; [
     # bitwarden-cli
     bitwarden-desktop
-    btop
     # cameractrls
     chezmoi
     cloudflared
@@ -23,20 +22,19 @@
     direnv
     eza
     fd
+    ffmpeg
     fzf
     ghostty
     gnupg
-    hcp
-    kbfs
-    keybase-gui
-    # killall
+    imagemagick
+    jq
     lazygit
     loupe
     neovim-nightly-overlay.packages.${system}.default
-    nixfmt-rfc-style
     overskride
     podman
     podman-tui
+    poppler
     rclone
     ripgrep
     sops
