@@ -39,6 +39,7 @@
     poppler
     rclone
     ripgrep
+        rpi-imager
     sops
     starship
         swaynotificationcenter
@@ -52,6 +53,13 @@
     zen-browser.packages."${system}".default
     zoxide
   ];
+
+  #   wayland.windowManager.hyprland = {
+  # enable = true;
+  # # set the Hyprland and XDPH packages to null to use the ones from the NixOS module
+  # package = null;
+  # portalPackage = null;
+# };
 
   programs.home-manager.enable = true;
   programs.direnv.enable = true;

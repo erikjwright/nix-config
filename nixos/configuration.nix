@@ -74,6 +74,8 @@ pkgs,
     ];
 
     environment.sessionVariables = rec {
+          NIXOS_OZONE_WL = "1";
+
         XDG_CACHE_HOME = "$HOME/.cache";
         XDG_CONFIG_HOME = "$HOME/.config";
         XDG_DATA_HOME = "$HOME/.local/share";
@@ -100,7 +102,6 @@ pkgs,
     users = {
         users.erik = {
             shell = pkgs.zsh;
-
             isNormalUser = true;
             description = "Erik Wright";
             extraGroups = [
@@ -119,46 +120,48 @@ pkgs,
         polkitPolicyOwners = [ "erik" ];
     };
     programs.git.enable = true;
-    programs.hyprland = {
-        enable = true;
-        portalPackage.enable = true;
-    };
+    programs.hyprland.enable = true;
+    # programs.hyprland = {
+    #     enable = true;
+    #     withUWSM = true; # recommended for most users
+    #     xwayland.enable = true; # Xwayland can be disabled.
+    # };
 
     programs.light.enable = true;
     programs.zsh.enable = true;
 
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
-    programs.mtr.enable = true;
-
-    programs.gpg-agent = {
-        enable = true;
-        defaultCacheTtl = 1800;
-        enableSshSupport = true;
-    };
+    # programs.mtr.enable = true;
+    #
+    # programs.gpg-agent = {
+    #     enable = true;
+    #     defaultCacheTtl = 1800;
+    #     enableSshSupport = true;
+    # };
 
 
 
     # List services that you want to enable:
-    security.rtkit.enable = true;
-
-    services.pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-        # If you want to use JACK applications, uncomment this
-        #jack.enable = true;
-    };
-
-    services.pipewire.wireplumber.extraConfig.bluetoothEnhancements = {
-        "monitor.bluez.properties" = {
-            "bluez5.enable-sbc-xq" = true;
-            "bluez5.enable-msbc" = true;
-            "bluez5.enable-hw-volume" = true;
-            "bluez5.roles" = [ "hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag" ];
-        };
-    };
+    # security.rtkit.enable = true;
+    #
+    # services.pipewire = {
+    #     enable = true;
+    #     alsa.enable = true;
+    #     alsa.support32Bit = true;
+    #     pulse.enable = true;
+    #     # If you want to use JACK applications, uncomment this
+    #     #jack.enable = true;
+    # };
+    #
+    # services.pipewire.wireplumber.extraConfig.bluetoothEnhancements = {
+    #     "monitor.bluez.properties" = {
+    #         "bluez5.enable-sbc-xq" = true;
+    #         "bluez5.enable-msbc" = true;
+    #         "bluez5.enable-hw-volume" = true;
+    #         "bluez5.roles" = [ "hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag" ];
+    #     };
+    # };
 
     services.mullvad-vpn.enable = true;
     services.mullvad-vpn.package = pkgs.mullvad-vpn;
