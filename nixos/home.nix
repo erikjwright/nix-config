@@ -11,12 +11,15 @@
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
+        age
     # bitwarden-cli
     bitwarden-desktop
     # cameractrls
     chezmoi
+        clang
     cloudflared
     cryptomator
+        cryptsetup
     czkawka
     # dbeaver-bin
     direnv
@@ -25,7 +28,8 @@
     ffmpeg
     fzf
     ghostty
-    gnupg
+        gparted
+        gnupg
         hyprpolkitagent
     imagemagick
     jq
@@ -50,6 +54,7 @@
     waybar
     wofi
     yazi
+        yq
     zen-browser.packages."${system}".default
     zoxide
   ];
