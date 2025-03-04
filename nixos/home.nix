@@ -1,6 +1,7 @@
 {
   pkgs,
   neovim-nightly-overlay,
+  nixpkgs-stable,
   zen-browser,
   ...
 }:
@@ -11,15 +12,16 @@
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
-        age
+    age
+    dbeaver-bin
     # bitwarden-cli
     bitwarden-desktop
     # cameractrls
     chezmoi
-        clang
+    clang
     cloudflared
     cryptomator
-        cryptsetup
+    cryptsetup
     czkawka
     # dbeaver-bin
     direnv
@@ -28,14 +30,15 @@
     ffmpeg
     fzf
     ghostty
-        gparted
-        gnupg
-        hyprpolkitagent
+    gparted
+    gnupg
+    hyprpolkitagent
     imagemagick
     jq
     lazygit
+    lazysql
     loupe
-        # mullvad-browser
+    # mullvad-browser
     neovim-nightly-overlay.packages.${system}.default
     overskride
     podman
@@ -43,18 +46,18 @@
     poppler
     rclone
     ripgrep
-        rpi-imager
     sops
     starship
-        swaynotificationcenter
+    swaynotificationcenter
     thunderbird
     ungoogled-chromium
     unzip
     vaultwarden
+    vmware-workstation
     waybar
     wofi
     yazi
-        yq
+    yq
     zen-browser.packages."${system}".default
     zoxide
   ];
@@ -64,7 +67,7 @@
   # # set the Hyprland and XDPH packages to null to use the ones from the NixOS module
   # package = null;
   # portalPackage = null;
-# };
+  # };
 
   programs.home-manager.enable = true;
   programs.direnv.enable = true;

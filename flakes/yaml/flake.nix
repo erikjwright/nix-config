@@ -20,9 +20,7 @@
       {
         devShells.default = mkShell {
           buildInputs = [
-    nix
-    nixfmt-rfc-style
- 
+                        yaml-language-server
           ];
         };
       }

@@ -15,31 +15,31 @@
         pkgs = import nixpkgs {
           inherit system;
         };
+        python = pkgs.python312;
       in
+      # pythonEnv = python.withPackages (p: [
+      #   p.pyodbc
+      # ]);
       with pkgs;
       {
         devShells.default = mkShell {
           buildInputs = [
+                        libiodbc
+            python
+            # pythonEnv
             pyright
-            python313
             ruff
             uv
           ];
-          nativeBuildInputs = with pkgs; [
-            stdenv.cc.cc.lib
-          ];
-          LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${pkgs.stdenv.cc.cc.lib}/lib";
+
           shellHook = ''
-            uv cache clean
-            if [ -d ".venv" ]; then
-              source .venv/bin/activate
-              uv sync
-            else
-              uv venv
-              source .venv/bin/activate
-              uv add dagster dagster-duckdb dagster-webserver pandas
-              uv lock
+            export UV_PYTHON_PREFERENCE="only-system"
+            export UV_PYTHON=${python}
+            if [ ! -d ".venv" ]; then
+              uv venv .venv
             fi
+            source .venv/bin/activate
+            echo "uv pip env ready"
           '';
         };
       }
