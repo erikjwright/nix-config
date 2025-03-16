@@ -13,7 +13,8 @@
 
   home.packages = with pkgs; [
     age
-    dbeaver-bin
+    beekeeper-studio
+    biome
     # bitwarden-cli
     bitwarden-desktop
     # cameractrls
@@ -23,7 +24,7 @@
     cryptomator
     cryptsetup
     czkawka
-    # dbeaver-bin
+    dbeaver-bin
     direnv
     eza
     fd
@@ -35,11 +36,14 @@
     hyprpolkitagent
     imagemagick
     jq
+    keybase-gui
     lazygit
     lazysql
     loupe
-    # mullvad-browser
+    mullvad-browser
     neovim-nightly-overlay.packages.${system}.default
+    obs-studio
+    openssl
     overskride
     podman
     podman-tui
@@ -50,6 +54,7 @@
     starship
     swaynotificationcenter
     thunderbird
+    tutanota-desktop
     ungoogled-chromium
     unzip
     vaultwarden
