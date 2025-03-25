@@ -12,7 +12,6 @@
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
-    age
     beekeeper-studio
     biome
     # bitwarden-cli
@@ -22,17 +21,16 @@
     clang
     cloudflared
     cryptomator
-    cryptsetup
     czkawka
     dbeaver-bin
+    diceware
     direnv
+    dive
     eza
     fd
     ffmpeg
     fzf
     ghostty
-    gparted
-    gnupg
     hyprpolkitagent
     imagemagick
     jq
@@ -43,9 +41,10 @@
     mullvad-browser
     neovim-nightly-overlay.packages.${system}.default
     obs-studio
-    openssl
     overskride
+    pinentry-tty
     podman
+    podman-compose
     podman-tui
     poppler
     rclone
@@ -77,6 +76,8 @@
   programs.home-manager.enable = true;
   programs.direnv.enable = true;
   programs.htop.enable = true;
+  programs.gpg.enable = true;
+
   # programs.zsh.enable = true;
 
   # programs.firefox.enable = true;
